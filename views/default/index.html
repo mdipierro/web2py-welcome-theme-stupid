@@ -23,20 +23,33 @@
 {{pass}}
 
 {{block right_sidebar}}
-<h3>
-  <a class="btn-block" href="{{=URL('admin','default','index')}}">
-    <i class="fa fa-cog"></i>
-    {{=T("admin")}}
-  </a>
-</h3>
-
-<p>
-  {{=T("Don't know what to do?")}}
-</p>
-
-<ul>
-  <li>{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
-  <li><a href="http://web2py.com">web2py.com</a></li>
-  <li><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
-</ul>
+<div class="card" style="width:300px;height:300px">
+  <div>
+    <div class="white padded">
+      <h3>
+        <a class="btn-block" href="{{=URL('admin','default','index')}}">
+          <i class="fa fa-cog"></i>
+          {{=T("admin")}}
+        </a>
+      </h3>
+    </div>
+    <div class="black padded">
+      <h3>
+        <a class="btn-block" href="{{=URL('admin','default','index')}}">
+          <i class="fa fa-cog"></i>
+          {{=T("admin")}}
+        </a>
+      </h3>
+      <p>
+        {{=T("Don't know what to do?")}}
+      </p>
+      
+      <ul>
+        <li>{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
+        <li><a href="http://web2py.com">web2py.com</a></li>
+        <li><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 {{end}}

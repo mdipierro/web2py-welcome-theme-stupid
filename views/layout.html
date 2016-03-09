@@ -1,7 +1,5 @@
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,27 +22,31 @@
     {{include "web2py_ajax.html"}}
   </head>
   <body class="black">   
+    <header class="black padded">      
+      <div class="container middle max900">
+        <div class="fill middle">                    
+          <label class="ham padded fa fa-bars" for="menu"></label>
+          <div class="burger accordion">
+            <input type="checkbox" id="menu"/>
+            {{=MENU(response.menu,_class='menu')}}
+            <ul class="menu right">
+              <li>
+                {{=auth.navbar(mode='dropdown')}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
     {{if response.flash:}}
     <div class="w2p_flash">
       {{=response.flash}}
     </div>
     {{pass}}
-    <header class="black padded">      
-      <div class="container middle max900">
-        <div class="fill middle">                    
-          {{=MENU(response.menu,_class='menu')}}
-          <ul class="menu right">
-            <li>
-              {{=auth.navbar(mode='dropdown')}}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
     {{if request.function=='index':}}
     <div class="fill relative" style="height:250px;background:url('{{=URL('static','images/background.jpg')}}') center center">
       <div class="center" style="top:100px;">
-        <h1 class="glass" style="display:inline;padding:20px">stupid.css</h1>
+        <h1 class="glass" style="display:inline;padding:20px">{{=request.application}}</h1>
       </div>
     </div>
     {{pass}}

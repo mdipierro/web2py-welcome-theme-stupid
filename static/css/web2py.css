@@ -24,37 +24,21 @@ div.w2p_export_menu a, div.w2p_wiki_tags a, div.w2p_cloud a {margin-left:5px; pa
 div.w2p_flash {
     font-weight:bold;
     display:none;
-    position:fixed;
-    padding:10px;
-    top:48px;
-    right:250px;
-    min-width:280px;
+    padding:20px 20px 20px 50px;
+    width:100%;    
     opacity:0.95;
-    margin:0px 0px 10px 10px;
     vertical-align:middle;
     cursor:pointer;
-    color:#fff;
-    background-color:#000;
-    border:2px solid #fff;
-    border-radius:8px;
-    -o-border-radius: 8px;
-    -moz-border-radius:8px;
-    -webkit-border-radius:8px;
-    background-image: -webkit-linear-gradient(top,#222,#000);
-    background-image: -o-linear-gradient(top,#222,#000);
-    background-image: -moz-linear-gradient(90deg, #222, #000);
-    background-image: linear-gradient(top,#222,#000);
-    background-repeat: repeat-x;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    color:#000;
+    background-color:#ffdc00;
     z-index:2000;
 }
 
-div.w2p_flash #closeflash{color:inherit; float:right; margin-left:15px;}
+div.w2p_flash:before{content:"×";float:right; margin-right:100px; color:black;}
 .ie-lte7  div.flash #closeflash
 {color:expression(this.parentNode.currentStyle['color']);float:none;position:absolute;right:4px;}
 
-div.w2p_flash:hover { opacity:0.25; }
+div.w2p_flash:hover { opacity:0.80; }
 
 div.error_wrapper {display:block}
 div.error {
