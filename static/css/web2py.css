@@ -199,6 +199,6 @@ li.w2p_grid_breadcrumb_elem {
 .ie-lte8 div.w2p_flash:hover {filter:alpha(opacity=25);}
 .ie9 #w2p_query_panel {padding-bottom:2px}
 
-.web2py_console .form-control {width: 20%; display: inline;}
-.web2py_console #w2p_keywords {width: 50%;}
+.web2py_console .form-control {width: 20% !important; display: inline;}
+.web2py_console #w2p_keywords {width: 50% !important;}
 .web2py_search_actions a, .web2py_console input[type=submit], .web2py_console input[type=button], .web2py_console button { padding: 6px 12px; }
