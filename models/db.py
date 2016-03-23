@@ -5,6 +5,9 @@
 ## File is released under public domain and you can use without limitations
 #########################################################################
 
+if request.global_settings.web2py_version < "2.13.3":
+    raise HTTP(500, "Requires web2py 2.13.3 or newer")
+
 ## if SSL/HTTPS is properly configured and you want all HTTP requests to
 ## be redirected to HTTPS, uncomment the line below:
 # request.requires_https()
@@ -16,9 +19,9 @@ myconf = AppConfig(reload=True)
 
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
-    db = DAL(myconf.take('db.uri'), 
-             pool_size = myconf.take('db.pool_size',cast=int),
-             migrate_enabled = myconf.take('db.migrate')=='true',
+    db = DAL(myconf.get('db.uri'), 
+             pool_size = myconf.get('db.pool_size'),
+             migrate_enabled = myconf.get('db.migrate'),
              check_reserved = ['all'])
 else:
     ## connect to Google BigTable (optional 'google:datastore://namespace')
@@ -34,8 +37,9 @@ else:
 ## none otherwise. a pattern can be 'controller/function.extension'
 response.generic_patterns = ['*'] if request.is_local else []
 ## choose a style for forms
-response.formstyle = myconf.take('forms.formstyle')  # or 'bootstrap3_stacked' or 'bootstrap2' or other
-response.form_label_separator = myconf.take('forms.separator')
+response.formstyle = myconf.get('forms.formstyle')  # or 'bootstrap3_stacked' or 'bootstrap2' or other
+response.form_label_separator = myconf.get('forms.separator') or ''
+
 
 ## (optional) optimize handling of static files
 # response.optimize_css = 'concat,minify,inline'
@@ -54,7 +58,8 @@ response.form_label_separator = myconf.take('forms.separator')
 
 from gluon.tools import Auth, Service, PluginManager
 
-auth = Auth(db)
+# host names must be a list of allowed host names (glob syntax allowed)
+auth = Auth(db, host_names=myconf.get('host.names'))
 service = Service()
 plugins = PluginManager()
 
@@ -63,9 +68,11 @@ auth.define_tables(username=False, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'logging' if request.is_local else myconf.take('smtp.server')
-mail.settings.sender = myconf.take('smtp.sender')
-mail.settings.login = myconf.take('smtp.login')
+mail.settings.server = 'logging' if request.is_local else myconf.get('smtp.server')
+mail.settings.sender = myconf.get('smtp.sender')
+mail.settings.login = myconf.get('smtp.login')
+mail.settings.tls = myconf.get('smtp.tls') or False
+mail.settings.ssl = myconf.get('smtp.ssl') or False
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
