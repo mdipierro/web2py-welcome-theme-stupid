@@ -1,5 +1,6 @@
 header a {color: white; font-size:1.1em}
 main {min-height: 70vh}
+table {color: black}
 .form-group {padding-bottom: 10px !important;}
 .w2p_hidden {display:none;visibility:visible}
 .right {float:right; text-align:right}
@@ -34,7 +35,7 @@ div.w2p_flash {
     z-index:2000;
 }
 
-div.w2p_flash:before{content:"×";float:right; margin-right:100px; color:black;}
+span#closeflash{float:right; margin-right:100px; color:black;}
 .ie-lte7  div.flash #closeflash
 {color:expression(this.parentNode.currentStyle['color']);float:none;position:absolute;right:4px;}
 

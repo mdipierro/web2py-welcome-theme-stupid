@@ -1,4 +1,4 @@
-.calendar {z-index:2000;position:relative;margin-top:140px;display:none;background-color:white;border:1px solid #000;color:#000;cursor:default;box-shadow:0 0 10px #666}.calendar * {text-align: center;font-size:10px!important}
+.calendar {z-index:2000;position:relative;margin-top:140px;display:none;background-color:white;border:1px solid #000;color:#000;cursor:default;box-shadow:0 0 10px #666}.calendar * {text-align: center;font-size:10px!important; color:black}
 .calendar table {border-collapse:collapse}
 .calendar tbody tr:hover {background-color:#fbf6d9}
 .calendar td, th {padding:5px; vertical-align:top; text-align:left; border:0}
