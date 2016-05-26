@@ -1,11 +1,11 @@
 {{extend 'layout.html'}}
 
-<h2>
-{{=T('Sign Up') if request.args(0) == 'register' else T('Log In') if request.args(0) == 'login' else T(request.args(0).replace('_',' ').title())}}
-</h2>
-
 <div class="center container">
-  <div class="twothirds glass lifted padded">
+  <div class="twothirds glass lifted spaced">
+    <div class="padded">
+      <h2>
+        {{=T('Sign Up') if request.args(0) == 'register' else T('Log In') if request.args(0) == 'login' else T(request.args(0).replace('_',' ').title())}}
+      </h2>
       {{
         if request.args(0)=='login':
             if not 'register' in auth.settings.actions_disabled:
@@ -17,6 +17,7 @@
         pass
         =form
         }}
+    </div>
   </div>
 </div>
 

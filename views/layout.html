@@ -8,12 +8,6 @@
     <link href="{{=URL('static','css/calendar.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{=URL('static','css/web2py.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    {{
-    left_sidebar_enabled = globals().get('left_sidebar_enabled', False)
-    right_sidebar_enabled = globals().get('right_sidebar_enabled', False)
-    middle_column = {0: 'fill', 1: 'threequarters', 2: 'half'}[
-    (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]
-    }}
     {{include "web2py_ajax.html"}}
   </head>
   <body class="black">   
@@ -46,22 +40,14 @@
     </div>
     {{pass}}
     <main class="white">
-      <div class="container max900">
-        {{if left_sidebar_enabled:}}
-        <div class="quarter padded">{{block left_sidebar}}{{end}}</div>
-        {{pass}}
-        <div class="{{=middle_column}} padded">{{include}}</div>
-        {{if right_sidebar_enabled:}}
-        <div class="quarter padded">{{block right_sidebar}}{{end}}</div>
-        {{pass}}
-      </div>
+      {{include}}
+    </main>
+    <footer class="black">
       <div class="silver center padded social">
         <a class="fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u={url}"></a>
         <a class="fa fa-twitter" href="https://twitter.com/home?status={url}"></a>
         <a class="fa fa-google" href="https://plus.google.com/share?url={url}"></a>
       </div>
-    </main>
-    <footer class="black">
       <div class="container padded max900">
         <div class="fill">
           Copyright @ 2016 - Web2py theme based on <a href="http://mdipierro.github.io/stupid.css/index.html">stupid.css</a>
